@@ -128,17 +128,16 @@ int  containsRef(string gt){
   return 0;
 }
 
-void loadIndices(vector<int> & tree, string set){
+void loadIndices(vector<int> & tree, const string& set){
 
-  vector<string>  indviduals = split(set, ",");
+  const vector<string>  individuals = split(set, ',');
 
-  if(indviduals.size() < 4){
-    cerr << "FATAL: the abba-baba requires four indviduals provided to the tree option" << endl;
+  if(individuals.size() < 4){
+    cerr << "FATAL: the abba-baba requires four individuals provided to the tree option" << endl;
     exit(1);
   }
-  for( vector<string>::iterator it = indviduals.begin(); it != indviduals.end(); it++){
-
-    int indx = atoi((*it).c_str());
+  for(const auto& individual : individuals){
+    int indx = atoi(individual.c_str());
     cerr << indx << endl; //print sample index for user check
     tree.push_back(indx);
   }

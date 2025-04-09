@@ -232,25 +232,25 @@ void calc(string haplotypes[][2], int nhaps, vector<long int> pos, vector<int> &
 	backgroundH[ haplotypes[background[i]][0].substr(start, (end - start)) ]++;
       }
 
-      for( map<string, int>::iterator th = targetH.begin(); th != targetH.end(); th++){    	
-	if( (*th).first.substr( (end - start)/2,1 ) == state){     
-	   sumaT += r8_choose(th->second, 2);  
-	   naltT += th->second;
+      for(const auto th : targetH){
+	if( th.first.substr( (end - start)/2,1 ) == state){     
+	   sumaT += r8_choose(th.second, 2);  
+	   naltT += th.second;
 	}
 	else{
-	  sumrT += r8_choose(th->second, 2);  
-	  nrefT += th->second;
+	  sumrT += r8_choose(th.second, 2);  
+	  nrefT += th.second;
 	}
       }
 
-      for( map<string, int>::iterator bh = backgroundH.begin(); bh != backgroundH.end(); bh++){
-        if( (*bh).first.substr( (end - start)/2,1 ) == state){
-	  sumaB += r8_choose(bh->second, 2);
-	  naltB += bh->second;
+      for(const auto& bh : backgroundH){
+        if( bh.first.substr( (end - start)/2,1 ) == state){
+	  sumaB += r8_choose(bh.second, 2);
+	  naltB += bh.second;
         }
         else{
-          sumrB += r8_choose(bh->second, 2);
-          nrefB += bh->second;
+          sumrB += r8_choose(bh.second, 2);
+          nrefB += bh.second;
         }
       }
       ehhAT = sumaT / (r8_choose(naltT, 2));
@@ -282,9 +282,9 @@ double EHH(string haplotypes[][2], int nhaps){
   double sum = 0;
   double nh  = 0;
 
-  for( map<string, int>::iterator it = hapcounts.begin(); it != hapcounts.end(); it++){
-    nh  += it->second; 
-    sum += r8_choose(it->second, 2);
+  for(const auto& it : hapcounts){
+    nh  += it.second; 
+    sum += r8_choose(it.second, 2);
   }
 
   double max = (sum /  r8_choose(nh, 2));
@@ -320,10 +320,10 @@ void appendHaplotypes(string tmpHaplotypes[][2], string haplotypes[][2], int nta
   }
 }
 
-void loadPhased(string haplotypes[][2], list<pop> & window, int ntarget){
-  for(list<pop>::iterator pos = window.begin(); pos != window.end(); pos++){
+void loadPhased(string haplotypes[][2], const list<pop>& window, int ntarget){
+  for(const auto& pos : window){
     int indIndex = 0;
-    for(vector<int>::iterator ind = pos->geno_index.begin(); ind != pos->geno_index.end(); ind++){
+    for(const auto _ : pos.geno_index){
       string g = pos->genotypes[indIndex];
       vector< string > gs = split(g, "|");
       haplotypes[indIndex][0].append(gs[0]);
@@ -358,17 +358,17 @@ void localPhase(string haplotypes[][2], list<pop> & window, int ntarget){
  
     int snpIndex  = 0;
 
-    for(list<pop>::iterator pos = window.begin(); pos != window.end(); pos++){    
+    for(const auto& pos : window){    
       
       int indIndex = 0;
 
-      for(vector<int>::iterator ind = pos->geno_index.begin(); ind != pos->geno_index.end(); ind++){      
-	int g = pos->geno_index[indIndex];
+      for(vector<int>::iterator ind = pos.geno_index.begin(); ind != pos.geno_index.end(); ind++){      
+	int g = pos.geno_index[indIndex];
 	double rang  = ((double)rand() / (double)(RAND_MAX));
-	if(rang < pos->unphred_p[indIndex][0]){
+	if(rang < pos.unphred_p[indIndex][0]){
 	  g = 0;
 	}
-	else if(rang < pos->unphred_p[indIndex][1]){
+	else if(rang < pos.unphred_p[indIndex][1]){
 	  g = 1;
 	}
 	else{

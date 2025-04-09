@@ -602,8 +602,8 @@ VariantFieldType Variant::infoType(const string& key) {
 
     void Variant::addFormatField(const string& key) {
         bool hasTag = false;
-        for (vector<string>::iterator t = format.begin(); t != format.end(); ++t) {
-            if (*t == key) {
+        for (const auto& t : format) {
+            if (t == key) {
                 hasTag = true;
                 break;
             }
@@ -1928,8 +1928,8 @@ list<int> glsWithAlt(int alt, int ploidy, int numalts) {
 map<int, int> glReorder(int ploidy, int numalts, map<int, int>& alleleIndexMapping, vector<int>& altsToRemove) {
     map<int, int> mapping;
     list<list<int> > orderedGenotypes = glorder(ploidy, numalts);
-    for (list<list<int> >::iterator v = orderedGenotypes.begin(); v != orderedGenotypes.end(); ++v) {
-        for (list<int>::iterator n = v->begin(); n != v->end(); ++n) {
+    for (auto& v : orderedGenotypes) {
+        for (list<int>::iterator n = v.begin(); n != v.end(); ++n) {
             *n = alleleIndexMapping[*n];
         }
     }
@@ -1966,9 +1966,9 @@ string Variant::getGenotype(const string& sample) {
 }
 
 bool Variant::isPhased(void) {
-    for (map<string, map<string, vector<string> > >::iterator s = samples.begin(); s != samples.end(); ++s) {
-        map<string, vector<string> >& sample = s->second;
-        map<string, vector<string> >::iterator g = sample.find("GT");
+    for (const auto& s : samples) {
+        const map<string, vector<string> >& sample = s.second;
+        const auto g = sample.find("GT");
         if (g != sample.end()) {
             string gt = g->second.front();
             if (gt.size() > 1 && gt.find("|") == string::npos) {

@@ -588,12 +588,12 @@ int main(int argc, char** argv) {
 	  if(i > 4999){
 	    fsts[i - 5000] =  parameters[5];
 	  }
-	  for(vector<int>::iterator itt = popt.questionable.begin(); itt != popt.questionable.end(); itt++){
-	    updateGenotypes(popt, popb, parameters, (*itt), 0);
+	  for(const auto itt : popt.questionable){
+	    updateGenotypes(popt, popb, parameters, itt, 0);
 
 	  }
-	  for(vector<int>::iterator itb = popb.questionable.begin(); itb != popb.questionable.end(); itb++){
-	    updateGenotypes(popt, popb, parameters, (*itb) , 1);
+	  for(const auto itb : popb.questionable){
+	    updateGenotypes(popt, popb, parameters, itb , 1);
 	  }
 	}
 
