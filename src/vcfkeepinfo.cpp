@@ -47,10 +47,10 @@ int main(int argc, char** argv) {
 
     vector<string> fieldsToErase;
     vector<string> infoIds = variantFile.infoIds();
-    for (vector<string>::iterator i = infoIds.begin(); i != infoIds.end(); ++i) {
-        if (!fieldsToKeep.count(*i)) {
-            fieldsToErase.push_back(*i);
-            variantFile.removeInfoHeaderLine(*i);
+    for (const auto& i : infoIds) {
+        if (!fieldsToKeep.count(i)) {
+            fieldsToErase.push_back(i);
+            variantFile.removeInfoHeaderLine(i);
         }
     }
 

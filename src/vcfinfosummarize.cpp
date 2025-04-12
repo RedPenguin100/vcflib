@@ -198,9 +198,9 @@ int main(int argc, char** argv) {
         vector<double> vals;
         map<string, vector<string> >::iterator i = var.info.find(sitewideField);
         if (i != var.info.end()) {
-            for (vector<string>::iterator s = i->second.begin(); s != i->second.end(); ++s) {
+            for (const auto& s : i->second) {
                 double d;
-                convert(*s, d);
+                convert(s, d);
                 vals.push_back(d);
             }
         }

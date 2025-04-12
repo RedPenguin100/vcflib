@@ -45,10 +45,9 @@ int main(int argc, char** argv) {
     while (variantFile.getNextVariant(var)) {
         vector<string>& ivs = var.info[key];
         double vs = 0;
-        for (vector<string>::iterator i = ivs.begin();
-             i != ivs.end(); ++i) {
+        for (const auto& i :ivs) {
             double v;
-            convert(*i, v);
+            convert(i, v);
             vs += v;
         }
         var.quality = vs / (double) ivs.size();

@@ -77,12 +77,11 @@ Type: statistics
     while (variantFile.getNextVariant(var)) {
         map<string, vector<VariantAllele> > variants = var.legacy_parsedAlternates();
 	cout << var << endl;
-        for (map<string, vector<VariantAllele> >::iterator va = variants.begin(); va != variants.end(); ++va) {
-            cout << " ( " << va->first << " :: ";
-            vector<VariantAllele>& vars = va->second;
-            vector<VariantAllele>::iterator g = vars.begin();
-            for (; g != vars.end(); ++g) {
-                cout << *g << "; ";
+        for (const auto& va : variants) {
+            cout << " ( " << va.first << " :: ";
+            const vector<VariantAllele>& vars = va.second;
+            for (const auto& g : vars) {
+                cout << g << "; ";
             }
             cout << " ) ";
         }
