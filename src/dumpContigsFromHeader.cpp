@@ -9,12 +9,9 @@
 
 #include "Variant.h"
 #include "split.h"
-#include "var.hpp"
 
 #include <string>
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
 #include <getopt.h>
 
 using namespace vcflib;

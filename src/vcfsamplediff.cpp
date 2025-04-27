@@ -7,10 +7,13 @@
     This software is published under the MIT License. See the LICENSE file.
 */
 
-#include "Variant.h"
 #include <string>
 #include <iostream>
 #include <getopt.h>
+
+#include "Variant.h"
+#include "convert.h"
+
 
 using namespace std;
 using namespace vcflib;

@@ -14,6 +14,7 @@
 #include <sstream>
 #include <iostream>
 #include "convert.h"
+#include "join.h"
 
 using namespace std;
 using namespace vcflib;

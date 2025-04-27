@@ -14,7 +14,6 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <string.h>
 #include <list>
 
 // join a vector of elements by a delimiter object.  ostream<< must be defined
@@ -35,9 +34,9 @@ std::string join(const std::vector<T>& elems, S& delim) {
 
 // same for lists
 template<class S, class T>
-std::string join(std::list<T>& elems, S& delim) {
+std::string join(const std::list<T>& elems, const S& delim) {
     std::stringstream ss;
-    typename std::list<T>::iterator e = elems.begin();
+    typename std::list<T>::const_iterator e = elems.begin();
     if (e != elems.end()) {
         ss << *e++;
         for (; e != elems.end(); ++e) {

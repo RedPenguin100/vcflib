@@ -1,5 +1,12 @@
 #include "rkmh.hpp"
 
+#include <string>
+#include <cmath>
+#include <algorithm>
+#include <limits>
+
+#include "murmur3.hpp"
+
 namespace rkmh {
 
 // Check a string (as a char*) for non-canonical DNA bases

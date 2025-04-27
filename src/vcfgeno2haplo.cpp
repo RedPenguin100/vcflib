@@ -8,12 +8,15 @@
 */
 
 #include "Variant.h"
-#include <getopt.h>
 #include "Fasta.h"
 #include "gpatInfo.hpp"
-#include <algorithm>
+#include "join.h"
+#include "convert.h"
+
+#include <getopt.h>
 #include <list>
 #include <set>
+#include <iostream>
 
 using namespace std;
 using namespace vcflib;

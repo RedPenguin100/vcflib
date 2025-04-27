@@ -8,9 +8,12 @@
 */
 
 #include "Variant.h"
-#include <algorithm>
+#include "join.h"
+#include "convert.h"
+
 #include <vector>
 #include <map>
+
 
 using namespace std;
 using namespace vcflib;

@@ -9,12 +9,11 @@
 
 #include "Variant.h"
 #include "BedReader.h"
-#include "IntervalTree.h"
-#include <getopt.h>
 #include "Fasta.h"
-#include <algorithm>
-#include <list>
-#include <set>
+#include "convert.h"
+
+#include <getopt.h>
+#include <iostream>
 
 using namespace std;
 using namespace vcflib;

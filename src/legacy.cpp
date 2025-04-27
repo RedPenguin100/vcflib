@@ -10,6 +10,10 @@
 */
 
 #include "legacy.h"
+#include "cigar.hpp"
+#include "vcf-wfa.h"
+#include "allele.hpp"
+
 #include <SmithWatermanGotoh.h>
 
 namespace vcflib {

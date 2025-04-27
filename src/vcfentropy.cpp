@@ -7,11 +7,13 @@
     This software is published under the MIT License. See the LICENSE file.
 */
 
+
 #include "Variant.h"
-#include "split.h"
+#include "convert.h"
 #include "Fasta.h"
+
 #include <getopt.h>
-#include "disorder.h"
+#include <disorder.h>
 
 using namespace std;
 using namespace vcflib;
@@ -20,7 +22,7 @@ void printSummary(char** argv) {
     cerr << "usage: " << argv[0] << " [options] <vcf file>" << endl
          << endl
          << "Annotate VCF records with the Shannon entropy of flanking sequence." << endl
-         << "Anotates the output VCF file with, for each record, EntropyLeft, EntropyRight," << endl
+         << "Annotates the output VCF file with, for each record, EntropyLeft, EntropyRight," << endl
          << "EntropyCenter, which are the entropies of the sequence of the given window size to the" << endl
          << "left, right, and center  of the record.  Also adds EntropyRef and EntropyAlt for each alt." << endl
          << "options:" << endl

@@ -8,9 +8,9 @@
 */
 
 #include "Variant.h"
-#include <algorithm>
-#include <getopt.h>
 #include "convert.h"
+
+#include <getopt.h>
 
 using namespace std;
 using namespace vcflib;

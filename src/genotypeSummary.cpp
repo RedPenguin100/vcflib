@@ -13,11 +13,8 @@
 
 #include <string>
 #include <iostream>
-#include <math.h>
 #include <cmath>
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
+#include <ctime>
 #include <getopt.h>
 #include <memory>
 
@@ -45,7 +42,7 @@ void printHelp(void){
   cerr << "INFO: output: table of genotype counts for each individual." << endl;
 
 
-  cerr << "INFO: usage:  genotypeSummmary --type PL --target 0,1,2,3,4,5,6,7 --file my.vcf --snp                                                               " << endl;
+  cerr << "INFO: usage:  genotypeSummary --type PL --target 0,1,2,3,4,5,6,7 --file my.vcf --snp                                                               " << endl;
   cerr << endl;
   cerr << "INFO: required: t,target     -- a zero based comma separated list of target individuals corresponding to VCF columns        " << endl;
   cerr << "INFO: required: f,file       -- proper formatted VCF                                                                        " << endl;

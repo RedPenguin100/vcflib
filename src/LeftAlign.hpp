@@ -1,12 +1,11 @@
 #pragma once
 
-#include "convert.h"
-#include "join.h"
-#include "split.h"
-#include "cigar.hpp"
+#include <iosfwd>
+
+#include <string>
 #include <vector>
-#include <set>
-#include <cmath>
+
+#include "cigar.hpp"
 
 namespace vcflib {
 

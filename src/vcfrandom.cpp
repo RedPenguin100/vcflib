@@ -7,10 +7,10 @@
     This software is published under the MIT License. See the LICENSE file.
 */
 
-#include <sstream>
-#include <stdlib.h>
-#include <time.h>
 #include "Variant.h"
+
+#include <sstream>
+#include <ctime>
 #include <cmath>
 
 using namespace std;

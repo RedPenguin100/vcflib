@@ -10,6 +10,7 @@
 #include "Variant.h"
 #include "BedReader.h"
 #include "IntervalTree.h"
+#include "convert.h"
 #include <getopt.h>
 #include "Fasta.h"
 #include <algorithm>

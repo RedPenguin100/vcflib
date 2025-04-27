@@ -11,6 +11,7 @@
 #include "stats.hpp"
 #include "Fasta.h"
 #include "gpatInfo.hpp"
+#include "convert.h"
 #include <getopt.h>
 #include <algorithm>
 #include <numeric>

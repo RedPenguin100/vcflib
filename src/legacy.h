@@ -9,11 +9,8 @@
 
 #pragma once
 
-#include <utility>
 #include "Variant.h"
-#include "vcf-wfa.h"
-#include "allele.hpp"
-#include "cigar.hpp"
+
 
 using namespace std;
 
@@ -22,7 +19,7 @@ namespace vcflib {
 class VariantLegacy : public Variant {
 public:
 
-    VariantLegacy() { }
+	VariantLegacy() = default;
 
     VariantLegacy(VariantCallFile& v)
         : Variant(v)

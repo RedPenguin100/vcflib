@@ -12,6 +12,9 @@
 
 #pragma once
 
+#include "split.h"
+#include "allele.hpp"
+
 #include <vector>
 #include <list>
 #include <map>
@@ -19,20 +22,13 @@
 #include <iostream>
 #include <fstream>
 #include <utility>
-#include <stdlib.h>
 #include <assert.h>
 #include <stack>
 #include <queue>
 #include <set>
-#include <functional>
-#include <cstdio>
-#include "split.h"
-#include "join.h"
-#include <tabix.hpp>
-#include "convert.h"
-#include "rkmh.hpp"
-#include "LeftAlign.hpp"
 #include <Fasta.h>
+#include <memory>
+
 
 // The following includes moved into their sources because of lib dependencies
 // #include <SmithWatermanGotoh.h>
@@ -43,6 +39,8 @@
 extern "C" {
   #include "filevercmp.h"
 }
+
+class Tabix;
 
 using namespace std;
 
@@ -75,12 +73,13 @@ std::string reverse_complement(const std::string& seq);
 std::string toUpper(const std::string& seq);
 bool allATGCN(const string& s, bool allowLowerCase = true);
 
+
 class VariantCallFile {
 
 public:
 
     istream* file;
-    Tabix* tabixFile;
+    unique_ptr<Tabix> tabixFile;
 
     bool usingTabix;
     string vcf_header;
@@ -125,13 +124,7 @@ public:
         return parsedHeader;
     }
 
-    bool openTabix(const string& filename) {
-        usingTabix = true;
-        // Tabix does not modify the string, better to keep rest of the interface clean
-        tabixFile = new Tabix(const_cast<string&>(filename));
-        parsedHeader = parseHeader();
-        return parsedHeader;
-    }
+    bool openTabix(const string& filename);
 
     bool open(istream& stream) {
         file = &stream;
@@ -150,25 +143,11 @@ public:
         return parsedHeader;
     }
 
-    off_t file_pos() {
-        if (usingTabix) {
-            return tabixFile->file_pos();
-        }
-        return file->tellg();
-    }
+    off_t file_pos();
 
-    VariantCallFile(void) :
-        usingTabix(false),
-        parseSamples(true),
-        justSetRegion(false),
-        parsedHeader(false)
-    { }
+    VariantCallFile(void);
 
-    ~VariantCallFile(void) {
-        if (usingTabix) {
-            delete tabixFile;
-        }
-    }
+    ~VariantCallFile(void);
 
     bool is_open(void) { return parsedHeader; }
 

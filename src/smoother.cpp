@@ -7,6 +7,9 @@
     This software is published under the MIT License. See the LICENSE file.
 */
 
+#include "split.h"
+#include "gpatInfo.hpp"
+
 #include <iostream>
 #include <fstream>
 #include <getopt.h>
@@ -14,11 +17,7 @@
 #include <list>
 #include <vector>
 #include <string>
-#include "split.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "gpatInfo.hpp"
-#include <math.h>
+#include <cmath>
 
 using namespace std;
 

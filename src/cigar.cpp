@@ -1,6 +1,11 @@
 #include "cigar.hpp"
 
+#include "convert.h"
+
 #include <iostream>
+#include <string>
+#include <utility>
+
 
 namespace vcflib {
 

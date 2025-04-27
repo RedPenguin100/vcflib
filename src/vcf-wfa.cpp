@@ -9,6 +9,13 @@
 
 #include "Variant.h"
 #include "vcf-wfa.h"
+#include "convert.h"
+#include "join.h"
+#include "rkmh.hpp"
+#include "cigar.hpp"
+
+#include <map>
+
 
 namespace vcflib {
 

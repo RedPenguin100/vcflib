@@ -9,9 +9,9 @@
 */
 
 #include "Variant.h"
-#include "split.h"
 #include "Fasta.h"
 #include "gpatInfo.hpp"
+
 #include <getopt.h>
 #include <string.h>
 

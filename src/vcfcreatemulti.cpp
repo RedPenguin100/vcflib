@@ -11,10 +11,10 @@
 extern "C" {
 #include "vcf-c-api.h"
 }
-#include <set>
+
 #include <sstream>
 #include <getopt.h>
-#include "progress.h"
+#include <progress.h>
 
 using namespace std;
 using namespace vcflib;

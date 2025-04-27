@@ -8,7 +8,10 @@
 */
 
 #include "Variant.h"
+#include "join.h"
+
 #include <getopt.h>
+
 
 using namespace std;
 using namespace vcflib;

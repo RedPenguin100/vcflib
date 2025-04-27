@@ -9,7 +9,9 @@
 
 #include "Variant.h"
 #include "BedReader.h"
+#include "join.h"
 #include <getopt.h>
+
 
 using namespace std;
 using namespace vcflib;

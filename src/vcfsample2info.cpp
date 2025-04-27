@@ -8,8 +8,8 @@
 */
 
 #include "Variant.h"
-#include "split.h"
 #include "stats.hpp"
+#include "convert.h"
 #include "Fasta.h"
 #include <getopt.h>
 #include <algorithm>
@@ -168,12 +168,10 @@ int main(int argc, char** argv) {
     Variant var(variantFile);
     while (variantFile.getNextVariant(var)) {
         vector<double> vals;
-        for (map<string, map<string, vector<string> > >::iterator s = var.samples.begin();
-             s != var.samples.end(); ++s) {
-            map<string, vector<string> >& sample = s->second;
+        for (auto& [_, sample] : var.samples) {
             if (sample.find(sampleField) != sample.end()) {
                 double val;
-                string& s = sample[sampleField].front();
+                const string& s = sample[sampleField].front();
                 if (sample[sampleField].size() > 1) {
                     cerr << "Error: cannot handle sample fields with multiple values" << endl;
                     return 1;

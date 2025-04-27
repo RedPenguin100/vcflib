@@ -8,9 +8,6 @@
 */
 
 #include "Variant.h"
-#include "split.h"
-#include "cdflib.hpp"
-#include "pdflib.hpp"
 #include "var.hpp"
 #include "index.hpp"
 #include "gpatInfo.hpp"
@@ -19,11 +16,8 @@
 
 #include <string>
 #include <iostream>
-#include <math.h>
 #include <cmath>
-#include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
+#include <ctime>
 #include <getopt.h>
 #include <memory>
 

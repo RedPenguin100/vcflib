@@ -8,7 +8,8 @@
 */
 
 #include "Variant.h"
-#include "split.h"
+
+#include <cstring>
 #include <string>
 #include <sstream>
 #include <iostream>

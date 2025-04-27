@@ -1,6 +1,11 @@
 #include "LeftAlign.hpp"
 
+#include <cmath>
 #include <iostream>
+#include <set>
+#include <sstream>
+
+#include "cigar.hpp"
 
 // Attempts to left-realign all the indels represented by the alignment cigar.
 //

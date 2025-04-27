@@ -9,13 +9,14 @@
 
 #include "Variant.h"
 #include "BedReader.h"
-#include "IntervalTree.h"
-#include <getopt.h>
+#include "join.h"
 #include "Fasta.h"
-#include <algorithm>
-#include <list>
-#include <set>
+#include "cigar.hpp"
+
 #include <SmithWatermanGotoh.h>
+#include <getopt.h>
+
+
 // #include "ssw_cpp.hpp"
 
 

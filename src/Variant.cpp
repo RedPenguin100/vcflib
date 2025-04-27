@@ -9,11 +9,17 @@
 
 #include "Variant.h"
 #include "cigar.hpp"
-#include <utility>
 #include "multichoose.h"
-#include <SmithWatermanGotoh.h>
+#include "join.h"
 #include "ssw_cpp.hpp"
+
+#include <SmithWatermanGotoh.h>
 #include <regex>
+#include <utility>
+#include <string>
+#include <algorithm>
+#include <Fasta.h>
+#include <tabix.hpp>
 
 namespace vcflib {
 
@@ -1713,6 +1719,37 @@ vector<string> VariantCallFile::formatIds(void) {
         }
     }
     return tags;
+}
+
+bool VariantCallFile::openTabix(const string& filename)
+{
+	usingTabix = true;
+	// Tabix does not modify the string, better to keep rest of the interface clean
+	tabixFile = make_unique<Tabix>(const_cast<string&>(filename));
+	parsedHeader = parseHeader();
+	return parsedHeader;
+}
+
+off_t VariantCallFile::file_pos()
+{
+	if (usingTabix) {
+		return tabixFile->file_pos();
+	}
+	return file->tellg();
+}
+
+VariantCallFile::VariantCallFile():
+	usingTabix(false),
+	parseSamples(true),
+	justSetRegion(false),
+	parsedHeader(false)
+{ }
+
+VariantCallFile::~VariantCallFile()
+{
+	if (usingTabix) {
+        tabixFile.reset();
+	}
 }
 
 void VariantCallFile::removeInfoHeaderLine(string const & tag) {
