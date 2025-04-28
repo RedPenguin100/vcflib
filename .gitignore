@@ -6,7 +6,6 @@ notes.txt
 *.o
 *.cmake
 tmp
-BedReader.cpp
 Fasta.cpp
 Fasta.h
 Makefile.bad
