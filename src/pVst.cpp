@@ -178,13 +178,12 @@ void calc(copyNcounts * d){
 
     int counter = 0;
 
-    for(std::vector<double>::iterator it = d->total.begin();
-	it!= d->total.end(); it++){
+    for(const auto copyCount : d->total){
       if(counter < tsize){
-	d->target.push_back(*it);
+	d->target.push_back(copyCount);
       }
       else{
-	d->background.push_back(*it);
+	d->background.push_back(copyCount);
       }
       counter+=1;
     }
@@ -432,9 +431,8 @@ int main(int argc, char** argv) {
 
       if(var.info.find("CALLERS") != var.info.end()){
 	stringstream caller;
-	for(std::vector<std::string>::iterator z = var.info["CALLERS"].begin();
-	    z != var.info["CALLERS"].end(); z++){
-	  caller << (*z);
+	for(const auto& z : var.info["CALLERS"]){
+	  caller << z;
 	  caller << ',';
 	}
 

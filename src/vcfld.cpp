@@ -294,14 +294,15 @@ int main(int argc, char** argv) {
 
     Variant var(variantFile);
 
-    vector<string> samples = variantFile.sampleNames;
+    const vector<string>& samples = variantFile.sampleNames;
     int nsamples = samples.size();
 
     vector<int> target_h, background_h;
 
     int index = 0, indexi = 0;
 
-    for(vector<string>::iterator samp = samples.begin(); samp != samples.end(); samp++){
+	// TODO: reconsider loop
+    for(const auto& _ : samples){
 
       if(it.find(index) != it.end() ){
 	target_h.push_back(indexi);
